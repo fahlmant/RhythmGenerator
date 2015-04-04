@@ -35,7 +35,7 @@ def run():
             j += 1
         i+= 1
 
-def print():
+def print_generation():
     for i in range(8):
         #print each measure
         i+= 1
