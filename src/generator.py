@@ -45,15 +45,15 @@ def run():
             #add to measure
             #add beat to j
             j += 1
-        i+= 1
+        i += 1
 
 
 def print_generation():
 
     for i in range(8):
         #print each measure
-        i+= 1
-y7
+        i += 1
+
 
 def main():
 
