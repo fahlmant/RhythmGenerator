@@ -31,7 +31,7 @@ class Element(object):
 
 
 def get_length(length):
-    
+
     if(length is 16):
         return 1
     elif(length is 8):
@@ -42,6 +42,7 @@ def get_length(length):
         return 8
     elif(length is 1):
         return 16
+
 
 def run(measure_list):
 
@@ -76,7 +77,7 @@ def convert_to_lilypond(measure_list):
     file = open("something.ly", "w+")
     file.write("\\version \"2.18.2\"\n\\relative f' {")
     for line in file:
-        print (line)
+        print(line)
     for m in measure_list:
         for j in range(len(m.notes)):
             element_length = get_length(m.notes[j].length)
@@ -84,7 +85,8 @@ def convert_to_lilypond(measure_list):
                 file.write("f" + str(element_length) + " ")
             else:
                 file.write("r" + str(element_length) + " ")
-    file.write("}") 
+    file.write("}")
+
 
 def main():
 
