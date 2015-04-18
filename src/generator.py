@@ -30,6 +30,19 @@ class Element(object):
         self.length = length
 
 
+def get_length(length):
+    
+    if(length is 16):
+        return 1
+    elif(length is 8):
+        return 2
+    elif(length is 4):
+        return 4
+    elif(length is 2):
+        return 8
+    elif(length is 1):
+        return 16
+
 def run(measure_list):
 
     for m in measure_list:
@@ -64,14 +77,13 @@ def convert_to_lilypond(measure_list):
     file.write("\\version \"2.18.2\"\n\\relative f' {")
     for line in file:
         print (line)
-#    for m in measure_list:
-#        for j in range(len(m.notes)):
-#            if (m.notes[j].type is "Note"):
-#                # write to file
-#                print("Writing Note to File")
-#            else:
-#                # write to file
-#                print("Writin Rest to File")
+    for m in measure_list:
+        for j in range(len(m.notes)):
+            element_length = get_length(m.notes[j].length)
+            if (m.notes[j].type is "Note"):
+                file.write("f" + str(element_length) + " ")
+            else:
+                file.write("r" + str(element_length) + " ")
     file.write("}") 
 
 def main():
