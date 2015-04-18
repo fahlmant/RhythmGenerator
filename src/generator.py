@@ -1,4 +1,3 @@
-import os
 import random
 
 # Note lengths by 16th note values
@@ -14,11 +13,10 @@ class Measure(object):
         self.notes = []
 
     def add_element(self, Element):
-        self.notes += Element
         total_beat_copy = self.total_beats
-        if (total_beat_copy - Element.length > 0):
+        if (total_beat_copy - Element.length >= 0):
             self.total_beats -= Element.length
-            self.notes.appent(Element)
+            self.notes.append(Element)
 
 
 # Element class, has a type and length
@@ -32,25 +30,49 @@ class Element(object):
         self.length = length
 
 
+def run(measure_list):
 
-def run(*measure_list):
-
-    for i in measure_list:
-        for j in range(16):
+    for m in measure_list:
+        for j in range(m.total_beats):
             index = random.randint(0, 4)
-            type_selector = random.randint(0, 1)
+            type_selector = random.randint(0, 10)
+            if(type_selector >= 7):
+                type_selector = 1
+            else:
+                type_selector = 0
             element_value = element_lengths[index]
             element_type = element_types[type_selector]
             element = Element(element_type, element_value)
-            
+            m.add_element(element)
+
+    print_generation(measure_list)
+    convert_to_lilypond(measure_list)
 
 
-def print_generation():
+def print_generation(measure_list):
 
-    for i in range(8):
-        # print each measure
-        i += 1
+    for m in measure_list:
+        print('|', end='')
+        for n in m.notes:
+            print(str(n.type) + str(n.length))
+        print('|')
 
+
+def convert_to_lilypond(measure_list):
+
+    file = open("something.ly", "w+")
+    file.write("\\version \"2.18.2\"\n\\relative f' {")
+    for line in file:
+        print (line)
+#    for m in measure_list:
+#        for j in range(len(m.notes)):
+#            if (m.notes[j].type is "Note"):
+#                # write to file
+#                print("Writing Note to File")
+#            else:
+#                # write to file
+#                print("Writin Rest to File")
+    file.write("}") 
 
 def main():
 
