@@ -50,7 +50,7 @@ def run(measure_list):
         for j in range(m.total_beats):
             index = random.randint(0, 4)
             type_selector = random.randint(0, 10)
-            if(type_selector >= 7):
+            if(type_selector >= 8):
                 type_selector = 1
             else:
                 type_selector = 0
