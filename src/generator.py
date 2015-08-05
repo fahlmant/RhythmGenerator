@@ -75,7 +75,7 @@ def print_generation(measure_list):
 def convert_to_lilypond(measure_list):
 
     file = open("something.ly", "w+")
-    file.write("\\version \"2.18.2\"\n\\relative f' {")
+    file.write("\\version \"2.14.2\"\n\\relative f' {")
     for line in file:
         print(line)
     for m in measure_list:
