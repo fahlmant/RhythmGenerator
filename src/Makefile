@@ -1,7 +1,7 @@
 all: output
 
 output:
-	python generator.py
+	python3 generator.py
 	lilypond something.ly
 	firefox something.pdf
 
