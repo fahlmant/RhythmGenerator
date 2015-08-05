@@ -7,7 +7,7 @@ output:
 
 server:
 	python3 generator.py
-	lilypond something.ly
-	sudo cp something.pdf /var/www/music
+	lilypond --png something.ly
+	sudo cp something.png /var/www/music
 clean:
 	rm something.*
