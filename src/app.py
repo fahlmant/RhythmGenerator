@@ -9,7 +9,9 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world(name=None):
     generator.main()
-    subprocess.Popen('lilypond -f png something.ly', shell=True)
+    subprocess.Popen('mv something.ly static/something.ly', shell=True)
+    subprocess.Popen('lilypond -f png static/something.ly', shell=True)
+    subprocess.Popen('mv something.png static/something.png', shell=True)
     return render_template('index.html', name=name)
 
 if __name__ == '__main__':
