@@ -6,6 +6,7 @@ import subprocess
 import generator
 app = Flask(__name__)
 
+
 @app.route('/')
 def hello_world(name=None):
     generator.main()

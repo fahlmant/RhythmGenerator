@@ -59,7 +59,6 @@ def run(measure_list):
             element = Element(element_type, element_value)
             m.add_element(element)
 
-    print_generation(measure_list)
     convert_to_lilypond(measure_list)
 
 
